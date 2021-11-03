@@ -11,8 +11,12 @@ public class HomeService {
     @Autowired
     HomeRepository homeRepository;
 
-    public Student getStudentById(Long id){
+    public Student findStudentById(Long id){
         return homeRepository.getById(id);
+    }
+
+    public boolean isStudentExists(Long id){
+        return homeRepository.existsById(id);
     }
 
     public List<Student> findAll(){

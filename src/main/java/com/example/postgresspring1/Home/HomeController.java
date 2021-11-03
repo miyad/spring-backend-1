@@ -21,6 +21,16 @@ public class HomeController {
         return homeService.findAll();
     }
 
+    @GetMapping(value = "/getStudent/{id}")
+    public Student getStudent(@PathVariable Long id){
+        System.out.println("get student id = "+id);
+        return homeService.findStudentById(id);
+    }
+
+    @GetMapping(value = "isStudentExists/{id}")
+    public boolean isStudentExists(@PathVariable Long id){
+        return homeService.isStudentExists(id);
+    }
 
     @PostMapping(value = "/student")
     @CrossOrigin(origins = "http://localhost:3000")
