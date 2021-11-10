@@ -19,11 +19,13 @@ public class HomeService {
         return homeRepository.existsById(id);
     }
 
+
+
     public List<Student> findAll(){
         return homeRepository.findAll();
     }
-    public Student saveStudent(Student student){
-        return homeRepository.save(student);
+    public void saveStudent(Student student){
+        homeRepository.save(student);
     }
 
     public void deleteStudentById(Long id){
