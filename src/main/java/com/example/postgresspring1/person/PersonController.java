@@ -38,6 +38,19 @@ public class PersonController {
         }
         return personService.isPersonExists(id);
     }
+    @GetMapping("/isPersonValid/{email}/{password}")
+    public Long isPersonValid(@PathVariable String email, @PathVariable String password){
+        Person person = personService.findByEmail(email);
+        Long id = 0L;
+        String md5Hex = DigestUtils.md5DigestAsHex(password.getBytes()).toUpperCase();
+        if(person != null){
+            id = person.getId();
+            if(personService.isPersonExists(id) && person.getPassword().equals(md5Hex))
+                return id;
+        }
+
+        return 0L;
+    }
 
 }
 
